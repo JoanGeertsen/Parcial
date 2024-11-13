@@ -12,7 +12,7 @@
         font-size: 1rem;
     }
   
-    /* Formulario - Tipo de evento */
+    /* Formulario - Tipo de cafe */
     .radio-group {
         flex-direction: column;
         gap: 10px;
@@ -268,22 +268,6 @@ textarea {
     color: #196333;       
     margin-top: 20px;
     text-align: left;
-}
-
-
-.titulo-eventos {
-    color: var(--acento-principal);            
-    font-size: 22px;            
-    margin-bottom: 10px;    
-}
-
-.nombre-evento {
-    font-size: 18px;           
-    margin: 5px 0;              
-}
-
-.nombre-evento strong {
-    color: white; 
 }
 
 /*  tabla */

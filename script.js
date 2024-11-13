@@ -12,31 +12,31 @@ let proximo = (function () {
 function actualizarTabla(tabla) {
     const tablaResultados = document.getElementById('tabla-resultados').querySelector('tbody');
 
-    // Limpiar el contenido previo de la tabla
+    // Limpia el contenido de la tabla
     tablaResultados.innerHTML = "";
 
     tabla.forEach((cafe) => {
         const fila = document.createElement('tr');
 
-        // Crear celda para el nombre del café
+        // Crea celda para el nombre del café
         const nombreCelda = document.createElement('td');
         const nombreTexto = document.createTextNode(cafe.nombre);
         nombreCelda.appendChild(nombreTexto);
         fila.appendChild(nombreCelda);
 
-        // Crear celda para la fecha
+        // Crea una celda para la fecha
         const fechaCelda = document.createElement('td');
         const fechaTexto = document.createTextNode(cafe.fecha);
         fechaCelda.appendChild(fechaTexto);
         fila.appendChild(fechaCelda);
 
-        // Crear celda para el origen
+        // Crea una celda para el origen
         const origenCelda = document.createElement('td');
         const origenTexto = document.createTextNode(cafe.origen);
         origenCelda.appendChild(origenTexto);
         fila.appendChild(origenCelda);
 
-        // Crear celda para el botón de editar
+        // Crea una celda para el botón de editar
         const editarCelda = document.createElement('td');
         const editarImagen = document.createElement('img');
         editarImagen.src = "img/editar.png";
@@ -48,7 +48,7 @@ function actualizarTabla(tabla) {
         editarCelda.appendChild(editarImagen);
         fila.appendChild(editarCelda);
 
-        // Crear celda para el botón de eliminar
+        // Crea una celda para el botón de eliminar
         const eliminarCelda = document.createElement('td');
         const eliminarImagen = document.createElement('img');
         eliminarImagen.src = "img/eliminar.png";
@@ -60,11 +60,11 @@ function actualizarTabla(tabla) {
         eliminarCelda.appendChild(eliminarImagen);
         fila.appendChild(eliminarCelda);
 
-        // Agregar la fila completa a la tabla
+        // Agrega la fila completa a la tabla
         tablaResultados.appendChild(fila);
     });
 
-    // Resetear el formulario después de actualizar la tabla
+    // Resetea el formulario 
     document.getElementById('cafe-form').reset();
 }
 
