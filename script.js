@@ -9,26 +9,65 @@ let proximo = (function () {
     };
 })();
 
-function actualziarTabla(tabla){
+function actualizarTabla(tabla) {
     const tablaResultados = document.getElementById('tabla-resultados').querySelector('tbody');
 
+    // Limpiar el contenido previo de la tabla
     tablaResultados.innerHTML = "";
 
     tabla.forEach((cafe) => {
         const fila = document.createElement('tr');
-        fila.innerHTML = `
-                    <td>${cafe.nombre}</td>
-                    <td>${cafe.fecha}</td>
-                    <td>${cafe.origen}</td>
-                    <td><img src="img/editar.png" alt="Editar" onclick="editarCafe('${cafe.nombre}')" style="cursor: pointer;"></td>
-                    <td><img src="img/eliminar.png" alt="Eliminar" onclick="eliminarCafe('${cafe.nombre}')" style="cursor: pointer;"></td>
-                `;
 
-    tablaResultados.appendChild(fila);
+        // Crear celda para el nombre del café
+        const nombreCelda = document.createElement('td');
+        const nombreTexto = document.createTextNode(cafe.nombre);
+        nombreCelda.appendChild(nombreTexto);
+        fila.appendChild(nombreCelda);
+
+        // Crear celda para la fecha
+        const fechaCelda = document.createElement('td');
+        const fechaTexto = document.createTextNode(cafe.fecha);
+        fechaCelda.appendChild(fechaTexto);
+        fila.appendChild(fechaCelda);
+
+        // Crear celda para el origen
+        const origenCelda = document.createElement('td');
+        const origenTexto = document.createTextNode(cafe.origen);
+        origenCelda.appendChild(origenTexto);
+        fila.appendChild(origenCelda);
+
+        // Crear celda para el botón de editar
+        const editarCelda = document.createElement('td');
+        const editarImagen = document.createElement('img');
+        editarImagen.src = "img/editar.png";
+        editarImagen.alt = "Editar";
+        editarImagen.style.cursor = "pointer";
+        editarImagen.onclick = function() {
+            editarCafe(cafe.nombre);
+        };
+        editarCelda.appendChild(editarImagen);
+        fila.appendChild(editarCelda);
+
+        // Crear celda para el botón de eliminar
+        const eliminarCelda = document.createElement('td');
+        const eliminarImagen = document.createElement('img');
+        eliminarImagen.src = "img/eliminar.png";
+        eliminarImagen.alt = "Eliminar";
+        eliminarImagen.style.cursor = "pointer";
+        eliminarImagen.onclick = function() {
+            eliminarCafe(cafe.nombre);
+        };
+        eliminarCelda.appendChild(eliminarImagen);
+        fila.appendChild(eliminarCelda);
+
+        // Agregar la fila completa a la tabla
+        tablaResultados.appendChild(fila);
     });
 
+    // Resetear el formulario después de actualizar la tabla
     document.getElementById('cafe-form').reset();
 }
+
 
 function eliminarCafe(nombreCafe){    
     const confirmacion = confirm(`¿Estás seguro de que quieres eliminar el café "${nombreCafe}"?`);
@@ -39,7 +78,7 @@ function eliminarCafe(nombreCafe){
 
             alert(`Café "${nombreCafe}" eliminado exitosamente.`);     
         
-            actualziarTabla(cafes);           
+            actualizarTabla(cafes);           
         } 
     else console.log("Eliminación cancelada.");
     
@@ -142,6 +181,6 @@ function agregarCafe() {
 
         mensajeCafe(cafe);
 
-        actualziarTabla(cafes);       
+        actualizarTabla(cafes);       
     }        
 };
