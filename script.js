@@ -20,8 +20,8 @@ function actualziarTabla(tabla){
                     <td>${cafe.nombre}</td>
                     <td>${cafe.fecha}</td>
                     <td>${cafe.origen}</td>
-                    <td><img src="img/editar.png" alt="Editar" onclick="editarEvento('${cafe.nombre}')" style="cursor: pointer;"></td>
-                    <td><img src="img/eliminar.png" alt="Eliminar" onclick="eliminarEvento('${cafe.nombre}')" style="cursor: pointer;"></td>
+                    <td><img src="img/editar.png" alt="Editar" onclick="editarCafe('${cafe.nombre}')" style="cursor: pointer;"></td>
+                    <td><img src="img/eliminar.png" alt="Eliminar" onclick="eliminarCafe('${cafe.nombre}')" style="cursor: pointer;"></td>
                 `;
 
     tablaResultados.appendChild(fila);
@@ -30,17 +30,16 @@ function actualziarTabla(tabla){
     document.getElementById('cafe-form').reset();
 }
 
-function eliminarEvento(nombreEvento){    
-    const confirmacion = confirm(`¿Estás seguro de que quieres eliminar el café "${nombreEvento}"?`);
+function eliminarCafe(nombreCafe){    
+    const confirmacion = confirm(`¿Estás seguro de que quieres eliminar el café "${nombreCafe}"?`);
     
     if (confirmacion) {        
-        const index = cafes.findIndex(evento => evento.nombre === nombreEvento);       
+        const index = cafes.findIndex(cafe => cafe.nombre === nombreCafe);       
             cafes.splice(index, 1);
 
-            alert(`Evento "${nombreEvento}" eliminado exitosamente.`);     
+            alert(`Café "${nombreCafe}" eliminado exitosamente.`);     
         
-            actualziarTabla(cafes);
-            actualizarEventosDestacados();
+            actualziarTabla(cafes);           
         } 
     else console.log("Eliminación cancelada.");
     
@@ -51,36 +50,33 @@ function eliminarEvento(nombreEvento){
     document.getElementById('tNombre').disabled = false;
   }
 
-function editarEvento(nombreEvento){    
-    console.log(`Editando evento ${nombreEvento}`);
+function editarCafe(nombreCafe){    
+    console.log(`Editando cafe ${nombreCafe}`);
     document.getElementById("boton-enviar").style.display = "none";
     document.getElementById("boton-reset").style.display = "none";
     document.getElementById("boton-actualizar").style.display = "block";
     document.getElementById("boton-cancelar").style.display = "block";
 
-    const eventoAEditar = cafes.find(evento => evento.nombre === nombreEvento);
+    const cafeAEditar = cafes.find(cafe => cafe.nombre === nombreCafe);
 
     //Setea los valores en el formulario
-    document.getElementById('tNombre').value = eventoAEditar.nombre;
+    document.getElementById('tNombre').value = cafeAEditar.nombre;
     document.getElementById('tNombre').disabled = true;
-    document.getElementById(`${eventoAEditar.tipo}`).checked=true;
-    document.getElementById("fechaTueste").value = eventoAEditar.fecha;
-    document.getElementById("evento-direccion").value = eventoAEditar.direccion;
-    document.getElementById("cbOrigen").value = eventoAEditar.ciudad;
-    document.getElementById("evento-capacidad").value = eventoAEditar.capacidad;
-    document.getElementById("chMolido").checked = eventoAEditar.gratuito;
-    document.getElementById("nbPrecio").value = eventoAEditar.costo;
-    document.getElementById("evento-puntuacion").value = eventoAEditar.valoracion;
-    document.getElementById("tDescripcion").value = eventoAEditar.observaciones;
+    document.getElementById(`rb${cafeAEditar.tueste}`).checked=true;
+    document.getElementById("fechaTueste").value = cafeAEditar.fecha;   
+    document.getElementById("cbOrigen").value = cafeAEditar.origen;  
+    document.getElementById("chMolido").checked = cafeAEditar.molido;
+    document.getElementById("nbPrecio").value = cafeAEditar.precio;   
+    document.getElementById("tDescripcion").value = cafeAEditar.descripcion;
 
 }
 
 document.getElementById('boton-actualizar').addEventListener('click', function() {
-    let nombreEvento = document.getElementById('tNombre').value;
-    const index = cafes.findIndex(evento => evento.nombre === nombreEvento);
+    let nombreCafe = document.getElementById('tNombre').value;
+    const index = cafes.findIndex(cafe => cafe.nombre === nombreCafe);
     cafes.splice(index, 1);
 
-    agregarEvento();
+    agregarCafe();
 
 
     document.getElementById("boton-enviar").style.display = "block";
@@ -100,14 +96,14 @@ document.getElementById('boton-cancelar').addEventListener('click', function() {
     document.getElementById('cafe-form').reset();
 });
 
-function mensajeEvento(cafe){    
+function mensajeCafe(cafe){    
     alert(`
         El cafe ${cafe.nombre} se registró con éxito.`);  
 }
 
-document.getElementById('boton-enviar').addEventListener('click', agregarEvento);
+document.getElementById('boton-enviar').addEventListener('click', agregarCafe);
 
-function agregarEvento() {       
+function agregarCafe() {       
     const cafeNombre = document.getElementById('tNombre').value;
     const cafeTueste = document.querySelector('input[name="nivelTueste"]:checked');
     const fechaTueste = document.getElementById('fechaTueste').value;    
@@ -144,7 +140,7 @@ function agregarEvento() {
     
         cafes.push(cafe); console.log("Cafe creado");
 
-        mensajeEvento(cafe);
+        mensajeCafe(cafe);
 
         actualziarTabla(cafes);       
     }        
