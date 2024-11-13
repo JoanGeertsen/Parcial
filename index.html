@@ -3,83 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eventic</title>
+    <title>Bunnu</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="recursos/check.png" type="image/png">
+    <link rel="icon" href="recursos/coffee-bean.png" type="image/png">
 </head>
 <body>
     
     <header>
-        <a class="logo" href="#">Eventic</a>
+        <a class="logo" href="#">
+            <img src="recursos/coffee-bean.png" alt="Bunnu Logo" class="logo-img">
+            Bunnu
+        </a>
         <nav>
             <ul>                
                 <li><a href="#form">Registrar</a></li>
                 <li><a href="#eventos">Gestionar</a></li>
             </ul>
         </nav>
-    </header>
+    </header>    
 
     <main>
         <section class="banner">
-            <h1>Bienvenidos a la página de Eventos</h1>
-            <p>Explora, registra y participa en eventos increíbles.</p>
+            <h1>Bienvenidos al mundo del café</h1>
+            <p>Explora y registra cafés de distintas partes del mundo.</p>
         </section>
-
-        <section class="destacado">
-            <h2>Eventos Destacados</h2>
-            <div class="eventos-grid">
-                <article class="evento" id="dummy">                    
-                    <p>Aún no hay eventos registrados</p>                    
-                    <a href="#formulario" class="btn">Registrar</a>
-                </article>
-            </div>
-        </section>
-    </main>
-
+    
     
 
     <section class="evento-form" id="formulario">
-        <h2>Registrar un Nuevo Evento</h2>
+        <h2>Registrar un Nuevo Café</h2>
         <form id="evento-form">
             <div class="formulario">
-                <label for="evento-nombre">Nombre del Evento</label>
+                <label for="evento-nombre">Nombre del Café</label>
                 <input type="text" id="evento-nombre" name="evento-nombre" required>
             </div>
     
             <div class="formulario" id="form">
-                <label>Tipo de Evento</label>                
+                <label>Nivel de tueste</label>                
                 <div class="radio-group">
                     <input type="radio" id="concierto" name="evento-tipo" value="concierto">
-                    <label for="concierto">Concierto</label>
+                    <label for="concierto">Bajo</label>
     
                     <input type="radio" id="exposicion" name="evento-tipo" value="exposicion">
-                    <label for="exposicion">Exposición</label>
+                    <label for="exposicion">Medio</label>
     
                     <input type="radio" id="feria" name="evento-tipo" value="feria">
-                    <label for="feria">Feria</label>
+                    <label for="feria">Alto</label>
                 </div>
             </div>
     
             <div class="formulario">
-                <label for="evento-fecha">Fecha del Evento</label>
+                <label for="evento-fecha">Fecha de tueste</label>
                 <input type="date" id="evento-fecha" name="evento-fecha" required>
-            </div>
+            </div>          
     
             <div class="formulario">
-                <label for="evento-direccion">Dirección</label>
-                <input type="text" id="evento-direccion" name="evento-direccion" required>
-            </div>
-    
-            <div class="formulario">
-                <label for="evento-cidad">Ciudad</label>
+                <label for="evento-cidad">Origen</label>
                 <select id="evento-cidad" name="evento-cidad" required>
-                    <option value="Bahía Blanca">Bahía Blanca</option>
-                    <option value="Buenos Aires">Buenos Aires</option>
-                    <option value="Rosario">Rosario</option>
-                    <option value="Neuquén">Neuquén</option>
-                    <option value="Córdoba">Córdoba</option>
-                    <option value="Mendoza">Mendoza</option>
-                    
+                    <option value="Bahía Blanca">Brasil</option>
+                    <option value="Buenos Aires">Colombia</option>
+                    <option value="Rosario">Bolivia</option>
+                    <option value="Neuquén">Etiopía</option>                    
                 </select>
             </div>
     
@@ -89,12 +73,12 @@
             </div>
     
             <div class="formulario">
-                <label for="evento-gratuito">Evento Gratuito</label>
+                <label for="evento-gratuito">Molido</label>
                 <input type="checkbox" id="evento-gratuito" name="evento-gratuito">
             </div>
     
             <div class="formulario">
-                <label for="evento-costo">Costo de Entrada</label>
+                <label for="evento-costo">Precio</label>
                 <input type="number" id="evento-costo" name="evento-costo" value="0" required>
             </div>
     
@@ -104,12 +88,12 @@
             </div>
     
             <div class="formulario">
-                <label for="evento-notas">Observaciones</label>
+                <label for="evento-notas">Descripción</label>
                 <textarea id="evento-notas" name="evento-notas"></textarea>
             </div>
     
             <div class="formulario-botones">
-                <button type="button" id="boton-enviar" class="btn">Cargar Evento</button>
+                <button type="button" id="boton-enviar" class="btn">Cargar Café</button>
                 <button type="button" id="boton-actualizar" class="btn">Actualizar</button>
                 <button type="button" id="boton-cancelar" class="btn">Cancelar</button>
                 <button type="reset" id="boton-reset" class="btn">Resetear</button>

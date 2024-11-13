@@ -40,8 +40,8 @@
 }
 
 :root {
-    --acento-principal: #3cf47c;
-    --acento-secundario: #2db060;
+    --acento-principal: #b2650b;
+    --acento-secundario: #7a3b02;
     --fondo-primario: #121212;
     --fondo-secundario: #1e1e1e;
   }
@@ -83,6 +83,15 @@ header {
     font-size: 1.5rem;
     font-weight: bold;
     margin-left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+    text-decoration: none;
+}
+
+.logo-img {
+    width: 30px; 
+    height: auto;
 }
 
 nav ul {
@@ -94,6 +103,8 @@ nav ul {
 nav ul li a {
     padding: 5px 10px;
     transition: color 0.3s;
+    color: #ffffff;
+    text-decoration: none;
 }
 
 nav ul li a:hover {
@@ -116,64 +127,6 @@ nav ul li a:hover {
 .banner p {
     font-size: 1.2rem;
     color: #bdbdbd;
-}
-
-/* Destacado */
-.destacado {
-    padding: 40px 20px;
-}
-
-.destacado h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: var(--acento-principal); 
-    margin-bottom: 40px;
-}
-
-.eventos-grid {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.evento {
-    width: 90%;
-    max-width: 500px;
-    box-sizing: border-box;
-    background-color: #1e1e1e;
-    padding: 20px;
-    border-radius: 8px;   
-    text-align: center;
-    transition: transform 0.3s;
-}
-
-.evento h3 {
-    color: var(--acento-principal); 
-    margin-bottom: 10px;
-}
-
-.evento p {
-    color: #bdbdbd;
-    margin-bottom: 10px;
-}
-
-.evento a.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--acento-principal); 
-    color: #121212;
-    border-radius: 4px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.evento a.btn:hover {
-    background-color: var(--acento-secundario); 
-}
-
-.evento:hover {
-    transform: scale(1.05);
 }
 
 
