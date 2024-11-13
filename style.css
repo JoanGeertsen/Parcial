@@ -11,16 +11,7 @@
     .banner p {
         font-size: 1rem;
     }
-
-    /* Eventos Destacados */
-    .eventos-grid {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .evento {
-        width: 90%; 
-    }
+  
     /* Formulario - Tipo de evento */
     .radio-group {
         flex-direction: column;

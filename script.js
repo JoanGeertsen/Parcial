@@ -14,14 +14,14 @@ function actualziarTabla(tabla){
 
     tablaResultados.innerHTML = "";
 
-    tabla.forEach((evento, i) => {
+    tabla.forEach((cafe) => {
         const fila = document.createElement('tr');
         fila.innerHTML = `
-                    <td>${evento.nombre}</td>
-                    <td>${evento.fecha}</td>
-                    <td>${evento.ciudad}</td>
-                    <td><img src="recursos/editar.png" alt="Editar" onclick="editarEvento('${evento.nombre}')" style="cursor: pointer;"></td>
-                    <td><img src="recursos/eliminar.png" alt="Eliminar" onclick="eliminarEvento('${evento.nombre}')" style="cursor: pointer;"></td>
+                    <td>${cafe.nombre}</td>
+                    <td>${cafe.fecha}</td>
+                    <td>${cafe.origen}</td>
+                    <td><img src="img/editar.png" alt="Editar" onclick="editarEvento('${cafe.nombre}')" style="cursor: pointer;"></td>
+                    <td><img src="img/eliminar.png" alt="Eliminar" onclick="eliminarEvento('${cafe.nombre}')" style="cursor: pointer;"></td>
                 `;
 
     tablaResultados.appendChild(fila);
@@ -100,72 +100,54 @@ document.getElementById('boton-cancelar').addEventListener('click', function() {
     document.getElementById('cafe-form').reset();
 });
 
-function mensajeEvento(evento){    
+function mensajeEvento(cafe){    
     alert(`
-        Evento ${evento.nombre} registrado con éxito.
-        Detalles:
-        Número: ${evento.numero}
-        Tipo: ${evento.tipo}
-        Fecha: ${evento.fecha}
-        Dirección: ${evento.direccion}
-        Ciudad: ${evento.ciudad}
-        Capacidad: ${evento.capacidad}
-        Gratuito: ${evento.gratuito ? 'Sí' : 'No'}
-        Costo: ${evento.costo}
-        Valoración: ${evento.valoracion}
-        Observaciones: ${evento.observaciones}`);  
+        El cafe ${cafe.nombre} se registró con éxito.`);  
 }
 
 document.getElementById('boton-enviar').addEventListener('click', agregarEvento);
 
 function agregarEvento() {    
-    const eventoNombre = document.getElementById('tNombre').value;
-    const tipoEvento = document.querySelector('input[name="nivelTueste"]:checked');
-    const fechaEvento = document.getElementById('fechaTueste').value;
-    const direccion = document.getElementById('evento-direccion').value;
-    const ciudad = document.getElementById('cbOrigen').value;
-    const capacidad = document.getElementById('evento-capacidad').value;
-    const gratuito = document.getElementById('chMolido').checked;
-    const costoEntrada = document.getElementById('nbPrecio').value;
+    const cafeNombre = document.getElementById('tNombre').value;
+    const cafeTueste = document.querySelector('input[name="nivelTueste"]:checked');
+    const fechaTueste = document.getElementById('fechaTueste').value;    
+    const origen = document.getElementById('cbOrigen').value;  
+    const molido = document.getElementById('chMolido').checked;
+    const cafePrecio = document.getElementById('nbPrecio').value;
     const valoracion = document.getElementById('evento-puntuacion').value;
-    const observaciones = document.getElementById('tDescripcion').value;
-
+    const descripcion = document.getElementById('tDescripcion').value;
     
 
     // Validaciones
-    if (!eventoNombre || !tipoEvento || !fechaEvento || !direccion || !capacidad || !valoracion) {
+    if (!cafeNombre || !cafeTueste || !fechaTueste ) {
         alert("Por favor, complete todos los campos requeridos.");
         return;
     }
 
-    // Verifica si ya existe un evento con el mismo nombre
-    if (cafes.some(evento => evento.nombre === eventoNombre)) {
-        alert("El nombre del evento ya está registrado.");
+    // Verifica si ya existe un cafe con el mismo nombre
+    if (cafes.some(cafe => cafe.nombre === cafeNombre)) {
+        alert("El nombre del café ya está registrado.");
     }
     
     else
     {
-         // Crea el objeto del evento
+         // Crea el objeto cafe
          const cafe = {
             numero: proximo(),
-            nombre: eventoNombre,
-            tipo: tipoEvento.value,
-            fecha: fechaEvento,
-            direccion: direccion,
-            ciudad: ciudad,
-            capacidad: capacidad,
-            gratuito: gratuito,
-            costo: gratuito ? 'Gratuito' : costoEntrada,
-            valoracion: valoracion,
-            observaciones: observaciones
+            nombre: cafeNombre,
+            tueste: cafeTueste.value,
+            fecha: fechaTueste,            
+            origen: origen,          
+            molido: molido,
+            precio: cafePrecio,           
+            descripcion: descripcion
          };
     
-        cafes.push(cafe); console.log("Evento creado");
+        cafes.push(cafe); console.log("Cafe creado");
 
         mensajeEvento(cafe);
 
-        actualziarTabla(cafes);
-        actualizarEventosDestacados();
+        actualziarTabla(cafes);       
     }        
 };
 
@@ -196,43 +178,3 @@ document.getElementById('finalizaBtn').addEventListener('click', function() {
 
     actualziarTabla(eventosEncontrados);
 });
-
-function actualizarEventosDestacados() {
-    let cartelera = document.getElementsByClassName("eventos-grid")[0];
-    let ultimosEventos = cafes.slice(-3);
-
-    cartelera.innerHTML = ""; 
-
-    ultimosEventos.forEach(evento => {
-        let articulo = document.createElement('article');
-        articulo.classList.add("evento");    
-        
-        articulo.innerHTML = `
-            <h3>${evento.nombre}</h3>
-            <p>Fecha: ${evento.fecha}</p>
-            <p>Ciudad: ${evento.ciudad}</p>
-            <a href="#cafes" class="btn">Ver más</a>
-        `;
-
-        cartelera.appendChild(articulo); 
-    });
-
-    // Muestra u oculta el elemento dummy según el número de eventos
-    if (cafes.length > 0)    
-        document.getElementById("dummy").style.display = "none";
-    else
-    {
-        let articulo = document.createElement('article');
-        articulo.classList.add("evento");
-        articulo.id = "dummy";
-        
-        articulo.innerHTML = `            
-            <p>Aún no hay eventos registrados</p>
-            <a href="#formulario" class="btn">Registrar</a>
-        `;
-
-        cartelera.appendChild(articulo);
-    }        
-};
-
-
