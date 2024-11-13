@@ -131,7 +131,7 @@ nav ul li a:hover {
 
 
 /* Formulario */
-.evento-form {
+.cafe-form {
     background-color: #1e1e1e;
     padding: 40px;
     border-radius: 8px;
@@ -140,7 +140,7 @@ nav ul li a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.evento-form h2 {
+.cafe-form h2 {
     text-align: center;
     color: var(--acento-principal); 
     margin-bottom: 20px;
@@ -234,7 +234,7 @@ textarea {
 
 
 /* Gestion */
-.gestion-eventos {
+.gestion-cafes {
     background-color: #1e1e1e;
     padding: 40px;
     border-radius: 8px;
@@ -244,7 +244,7 @@ textarea {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.gestion-eventos h2 {
+.gestion-cafes h2 {
     color: var(--acento-principal); 
     margin-bottom: 20px;
 }
@@ -296,15 +296,15 @@ textarea {
 }
 
 /*  tabla */
-.gestion-eventos table {
+.gestion-cafes table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
     margin-bottom: 50px;
 }
 
-.gestion-eventos table th,
-.gestion-eventos table td {
+.gestion-cafes table th,
+.gestion-cafes table td {
     padding: 15px;
     border: 1px solid var(--acento-principal);
     text-align: center;
@@ -312,7 +312,7 @@ textarea {
     font-weight: bold;    
 }
 
-.gestion-eventos table th {
+.gestion-cafes table th {
     background-color: var(--acento-principal);
     color: #121212;
     font-size: 0.85rem;
@@ -322,16 +322,16 @@ img{
     width: 20%;  
 }
 
-.gestion-eventos table tr:nth-child(even) {
+.gestion-cafes table tr:nth-child(even) {
     background-color: #2c2c2c;
 }
 
-.gestion-eventos table tr:hover {
+.gestion-cafes table tr:hover {
     background-color: var(--acento-secundario);
     color: #121212;
 }
 
-.gestion-eventos table td {
+.gestion-cafes table td {
     font-size: 1rem;
     background-color: #1e1e1e;
 }

@@ -1,4 +1,4 @@
-let eventos = [];
+let cafes = [];
 
 //Función proximo de la teoría
 let proximo = (function () {
@@ -31,15 +31,15 @@ function actualziarTabla(tabla){
 }
 
 function eliminarEvento(nombreEvento){    
-    const confirmacion = confirm(`¿Estás seguro de que quieres eliminar el evento "${nombreEvento}"?`);
+    const confirmacion = confirm(`¿Estás seguro de que quieres eliminar el café "${nombreEvento}"?`);
     
     if (confirmacion) {        
-        const index = eventos.findIndex(evento => evento.nombre === nombreEvento);       
-            eventos.splice(index, 1);
+        const index = cafes.findIndex(evento => evento.nombre === nombreEvento);       
+            cafes.splice(index, 1);
 
             alert(`Evento "${nombreEvento}" eliminado exitosamente.`);     
         
-            actualziarTabla(eventos);
+            actualziarTabla(cafes);
             actualizarEventosDestacados();
         } 
     else console.log("Eliminación cancelada.");
@@ -48,7 +48,7 @@ function eliminarEvento(nombreEvento){
     document.getElementById("boton-reset").style.display = "block";
     document.getElementById("boton-actualizar").style.display = "none";
     document.getElementById("boton-cancelar").style.display = "none";
-    document.getElementById('evento-nombre').disabled = false;
+    document.getElementById('tNombre').disabled = false;
   }
 
 function editarEvento(nombreEvento){    
@@ -58,27 +58,27 @@ function editarEvento(nombreEvento){
     document.getElementById("boton-actualizar").style.display = "block";
     document.getElementById("boton-cancelar").style.display = "block";
 
-    const eventoAEditar = eventos.find(evento => evento.nombre === nombreEvento);
+    const eventoAEditar = cafes.find(evento => evento.nombre === nombreEvento);
 
     //Setea los valores en el formulario
-    document.getElementById('evento-nombre').value = eventoAEditar.nombre;
-    document.getElementById('evento-nombre').disabled = true;
+    document.getElementById('tNombre').value = eventoAEditar.nombre;
+    document.getElementById('tNombre').disabled = true;
     document.getElementById(`${eventoAEditar.tipo}`).checked=true;
-    document.getElementById("evento-fecha").value = eventoAEditar.fecha;
+    document.getElementById("fechaTueste").value = eventoAEditar.fecha;
     document.getElementById("evento-direccion").value = eventoAEditar.direccion;
-    document.getElementById("evento-cidad").value = eventoAEditar.ciudad;
+    document.getElementById("cbOrigen").value = eventoAEditar.ciudad;
     document.getElementById("evento-capacidad").value = eventoAEditar.capacidad;
-    document.getElementById("evento-gratuito").checked = eventoAEditar.gratuito;
-    document.getElementById("evento-costo").value = eventoAEditar.costo;
+    document.getElementById("chMolido").checked = eventoAEditar.gratuito;
+    document.getElementById("nbPrecio").value = eventoAEditar.costo;
     document.getElementById("evento-puntuacion").value = eventoAEditar.valoracion;
-    document.getElementById("evento-notas").value = eventoAEditar.observaciones;
+    document.getElementById("tDescripcion").value = eventoAEditar.observaciones;
 
 }
 
 document.getElementById('boton-actualizar').addEventListener('click', function() {
-    let nombreEvento = document.getElementById('evento-nombre').value;
-    const index = eventos.findIndex(evento => evento.nombre === nombreEvento);
-    eventos.splice(index, 1);
+    let nombreEvento = document.getElementById('tNombre').value;
+    const index = cafes.findIndex(evento => evento.nombre === nombreEvento);
+    cafes.splice(index, 1);
 
     agregarEvento();
 
@@ -87,7 +87,7 @@ document.getElementById('boton-actualizar').addEventListener('click', function()
     document.getElementById("boton-reset").style.display = "block";
     document.getElementById("boton-actualizar").style.display = "none";
     document.getElementById("boton-cancelar").style.display = "none";
-    document.getElementById('evento-nombre').disabled = false;
+    document.getElementById('tNombre').disabled = false;
 });
 
 document.getElementById('boton-cancelar').addEventListener('click', function() {
@@ -95,9 +95,9 @@ document.getElementById('boton-cancelar').addEventListener('click', function() {
     document.getElementById("boton-reset").style.display = "block";
     document.getElementById("boton-actualizar").style.display = "none";
     document.getElementById("boton-cancelar").style.display = "none";
-    document.getElementById('evento-nombre').disabled = false;
+    document.getElementById('tNombre').disabled = false;
 
-    document.getElementById('evento-form').reset();
+    document.getElementById('cafe-form').reset();
 });
 
 function mensajeEvento(evento){    
@@ -119,16 +119,16 @@ function mensajeEvento(evento){
 document.getElementById('boton-enviar').addEventListener('click', agregarEvento);
 
 function agregarEvento() {    
-    const eventoNombre = document.getElementById('evento-nombre').value;
-    const tipoEvento = document.querySelector('input[name="evento-tipo"]:checked');
-    const fechaEvento = document.getElementById('evento-fecha').value;
+    const eventoNombre = document.getElementById('tNombre').value;
+    const tipoEvento = document.querySelector('input[name="nivelTueste"]:checked');
+    const fechaEvento = document.getElementById('fechaTueste').value;
     const direccion = document.getElementById('evento-direccion').value;
-    const ciudad = document.getElementById('evento-cidad').value;
+    const ciudad = document.getElementById('cbOrigen').value;
     const capacidad = document.getElementById('evento-capacidad').value;
-    const gratuito = document.getElementById('evento-gratuito').checked;
-    const costoEntrada = document.getElementById('evento-costo').value;
+    const gratuito = document.getElementById('chMolido').checked;
+    const costoEntrada = document.getElementById('nbPrecio').value;
     const valoracion = document.getElementById('evento-puntuacion').value;
-    const observaciones = document.getElementById('evento-notas').value;
+    const observaciones = document.getElementById('tDescripcion').value;
 
     
 
@@ -139,14 +139,14 @@ function agregarEvento() {
     }
 
     // Verifica si ya existe un evento con el mismo nombre
-    if (eventos.some(evento => evento.nombre === eventoNombre)) {
+    if (cafes.some(evento => evento.nombre === eventoNombre)) {
         alert("El nombre del evento ya está registrado.");
     }
     
     else
     {
          // Crea el objeto del evento
-         const evento = {
+         const cafe = {
             numero: proximo(),
             nombre: eventoNombre,
             tipo: tipoEvento.value,
@@ -160,11 +160,11 @@ function agregarEvento() {
             observaciones: observaciones
          };
     
-        eventos.push(evento); console.log("Evento creado");
+        cafes.push(cafe); console.log("Evento creado");
 
-        mensajeEvento(evento);
+        mensajeEvento(cafe);
 
-        actualziarTabla(eventos);
+        actualziarTabla(cafes);
         actualizarEventosDestacados();
     }        
 };
@@ -178,28 +178,28 @@ inputPuntuacion.addEventListener('input', function() {
 
 document.getElementById('contieneBtn').addEventListener('click', function() {    
     let inputText = document.getElementById("textoFiltro").value;
-    const eventosEncontrados = eventos.filter(e => e.nombre.toLowerCase().includes(inputText.toLowerCase()));
+    const eventosEncontrados = cafes.filter(e => e.nombre.toLowerCase().includes(inputText.toLowerCase()));
 
     actualziarTabla(eventosEncontrados);
 });
 
 document.getElementById('comienzaBtn').addEventListener('click', function() {    
     let inputText = document.getElementById("textoFiltro").value;
-    const eventosEncontrados = eventos.filter(e => new RegExp(`^${inputText}`, 'i').test(e.nombre));
+    const eventosEncontrados = cafes.filter(e => new RegExp(`^${inputText}`, 'i').test(e.nombre));
 
     actualziarTabla(eventosEncontrados);
 });
 
 document.getElementById('finalizaBtn').addEventListener('click', function() {    
     let inputText = document.getElementById("textoFiltro").value;
-    const eventosEncontrados = eventos.filter(e => new RegExp(`${inputText}$`, 'i').test(e.nombre));
+    const eventosEncontrados = cafes.filter(e => new RegExp(`${inputText}$`, 'i').test(e.nombre));
 
     actualziarTabla(eventosEncontrados);
 });
 
 function actualizarEventosDestacados() {
     let cartelera = document.getElementsByClassName("eventos-grid")[0];
-    let ultimosEventos = eventos.slice(-3);
+    let ultimosEventos = cafes.slice(-3);
 
     cartelera.innerHTML = ""; 
 
@@ -211,14 +211,14 @@ function actualizarEventosDestacados() {
             <h3>${evento.nombre}</h3>
             <p>Fecha: ${evento.fecha}</p>
             <p>Ciudad: ${evento.ciudad}</p>
-            <a href="#eventos" class="btn">Ver más</a>
+            <a href="#cafes" class="btn">Ver más</a>
         `;
 
         cartelera.appendChild(articulo); 
     });
 
     // Muestra u oculta el elemento dummy según el número de eventos
-    if (eventos.length > 0)    
+    if (cafes.length > 0)    
         document.getElementById("dummy").style.display = "none";
     else
     {

@@ -11,7 +11,7 @@
     
     <header>
         <a class="logo" href="#">
-            <img src="recursos/coffee-bean.png" alt="Bunnu Logo" class="logo-img">
+            <img src="img/coffee-bean.png" alt="Bunnu Logo" class="logo-img">
             Bunnu
         </a>
         <nav>
@@ -30,61 +30,56 @@
     
     
 
-    <section class="evento-form" id="formulario">
+    <section class="cafe-form" id="formulario">
         <h2>Registrar un Nuevo Café</h2>
-        <form id="evento-form">
+        <form id="cafe-form">
             <div class="formulario">
-                <label for="evento-nombre">Nombre del Café</label>
-                <input type="text" id="evento-nombre" name="evento-nombre" required>
+                <label for="tNombre">Nombre del Café</label>
+                <input type="text" id="tNombre" name="tNombre" required>
             </div>
     
             <div class="formulario" id="form">
                 <label>Nivel de tueste</label>                
                 <div class="radio-group">
-                    <input type="radio" id="concierto" name="evento-tipo" value="concierto">
-                    <label for="concierto">Bajo</label>
+                    <input type="radio" id="rbBajo" name="nivelTueste" value="bajo">
+                    <label for="bajo">Bajo</label>
     
-                    <input type="radio" id="exposicion" name="evento-tipo" value="exposicion">
-                    <label for="exposicion">Medio</label>
+                    <input type="radio" id="rbMedio" name="nivelTueste" value="medio">
+                    <label for="medio">Medio</label>
     
-                    <input type="radio" id="feria" name="evento-tipo" value="feria">
-                    <label for="feria">Alto</label>
+                    <input type="radio" id="rbAlto" name="nivelTueste" value="alto">
+                    <label for="alto">Alto</label>
                 </div>
             </div>
     
             <div class="formulario">
-                <label for="evento-fecha">Fecha de tueste</label>
-                <input type="date" id="evento-fecha" name="evento-fecha" required>
+                <label for="fechaTueste">Fecha de tueste</label>
+                <input type="date" id="fechaTueste" name="fechaTueste" required>
             </div>          
     
             <div class="formulario">
-                <label for="evento-cidad">Origen</label>
-                <select id="evento-cidad" name="evento-cidad" required>
-                    <option value="Bahía Blanca">Brasil</option>
-                    <option value="Buenos Aires">Colombia</option>
-                    <option value="Rosario">Bolivia</option>
-                    <option value="Neuquén">Etiopía</option>                    
+                <label for="cbOrigen">Origen</label>
+                <select id="cbOrigen" name="cbOrigen" required>
+                    <option value="Brasil">Brasil</option>
+                    <option value="Colombia">Colombia</option>
+                    <option value="Bolivia">Bolivia</option>
+                    <option value="Etiopia">Etiopía</option>                    
                 </select>
+            </div>         
+    
+            <div class="formulario">
+                <label for="chMolido">Molido</label>
+                <input type="checkbox" id="chMolido" name="chMolido">
             </div>
     
             <div class="formulario">
-                <label for="evento-capacidad">Capacidad del Evento</label>
-                <input type="number" id="evento-capacidad" name="evento-capacidad" required>
-            </div>
-    
-            <div class="formulario">
-                <label for="evento-gratuito">Molido</label>
-                <input type="checkbox" id="evento-gratuito" name="evento-gratuito">
-            </div>
-    
-            <div class="formulario">
-                <label for="evento-costo">Precio</label>
-                <input type="number" id="evento-costo" name="evento-costo" value="0" required>
+                <label for="nbPrecio">Precio</label>
+                <input type="number" id="nbPrecio" name="nbPrecio" value="0" required>
             </div>        
     
             <div class="formulario">
-                <label for="evento-notas">Descripción</label>
-                <textarea id="evento-notas" name="evento-notas"></textarea>
+                <label for="tDescripcion">Descripción</label>
+                <textarea id="tDescripcion" name="tDescripcion"></textarea>
             </div>
     
             <div class="formulario-botones">
@@ -96,7 +91,7 @@
         </form>
     </section>
 
-    <section class="gestion-eventos" id="eventos">
+    <section class="gestion-cafes" id="cafes">
         <h2>Listado</h2>
 
         <div id="resultado">
@@ -131,7 +126,7 @@
     </section>        
 
     <footer>
-        <p>&copy; 2024 Eventos. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Bunnu. Todos los derechos reservados.</p>
         <ul>
             <li><a href="#">Política de Privacidad</a></li>
             <li><a href="#">Términos y Condiciones</a></li>
