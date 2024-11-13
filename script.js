@@ -27,7 +27,7 @@ function actualziarTabla(tabla){
     tablaResultados.appendChild(fila);
     });
 
-    document.getElementById('evento-form').reset();
+    document.getElementById('cafe-form').reset();
 }
 
 function eliminarEvento(nombreEvento){    
@@ -107,14 +107,13 @@ function mensajeEvento(cafe){
 
 document.getElementById('boton-enviar').addEventListener('click', agregarEvento);
 
-function agregarEvento() {    
+function agregarEvento() {       
     const cafeNombre = document.getElementById('tNombre').value;
     const cafeTueste = document.querySelector('input[name="nivelTueste"]:checked');
     const fechaTueste = document.getElementById('fechaTueste').value;    
     const origen = document.getElementById('cbOrigen').value;  
     const molido = document.getElementById('chMolido').checked;
-    const cafePrecio = document.getElementById('nbPrecio').value;
-    const valoracion = document.getElementById('evento-puntuacion').value;
+    const cafePrecio = document.getElementById('nbPrecio').value;  
     const descripcion = document.getElementById('tDescripcion').value;
     
 
@@ -150,31 +149,3 @@ function agregarEvento() {
         actualziarTabla(cafes);       
     }        
 };
-
-const valorPuntuacion = document.getElementById('valorPuntuacion');
-const inputPuntuacion = document.getElementById('evento-puntuacion');
-
-inputPuntuacion.addEventListener('input', function() {
-    valorPuntuacion.textContent = inputPuntuacion.value;
-});
-
-document.getElementById('contieneBtn').addEventListener('click', function() {    
-    let inputText = document.getElementById("textoFiltro").value;
-    const eventosEncontrados = cafes.filter(e => e.nombre.toLowerCase().includes(inputText.toLowerCase()));
-
-    actualziarTabla(eventosEncontrados);
-});
-
-document.getElementById('comienzaBtn').addEventListener('click', function() {    
-    let inputText = document.getElementById("textoFiltro").value;
-    const eventosEncontrados = cafes.filter(e => new RegExp(`^${inputText}`, 'i').test(e.nombre));
-
-    actualziarTabla(eventosEncontrados);
-});
-
-document.getElementById('finalizaBtn').addEventListener('click', function() {    
-    let inputText = document.getElementById("textoFiltro").value;
-    const eventosEncontrados = cafes.filter(e => new RegExp(`${inputText}$`, 'i').test(e.nombre));
-
-    actualziarTabla(eventosEncontrados);
-});
