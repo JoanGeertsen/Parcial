@@ -1,5 +1,9 @@
 let cafes = [];
 
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("mensaje-error").style.display = "none";
+});
+
 //Función proximo de la teoría
 let proximo = (function () {
     let numero = 0;
@@ -29,6 +33,12 @@ function actualizarTabla(tabla) {
         const fechaTexto = document.createTextNode(cafe.fecha);
         fechaCelda.appendChild(fechaTexto);
         fila.appendChild(fechaCelda);
+
+        // Crea una celda para el tueste
+        const tuesteCelda = document.createElement('td');
+        const tuesteTexto = document.createTextNode(cafe.tueste);
+        tuesteCelda.appendChild(tuesteTexto);
+        fila.appendChild(tuesteCelda);
 
         // Crea una celda para el origen
         const origenCelda = document.createElement('td');
@@ -125,6 +135,10 @@ document.getElementById('boton-actualizar').addEventListener('click', function()
     document.getElementById('tNombre').disabled = false;
 });
 
+document.getElementById('boton-reset').addEventListener('click', function(){
+    borrarError();
+});
+
 document.getElementById('boton-cancelar').addEventListener('click', function() {
     document.getElementById("boton-enviar").style.display = "block";
     document.getElementById("boton-reset").style.display = "block";
@@ -132,6 +146,7 @@ document.getElementById('boton-cancelar').addEventListener('click', function() {
     document.getElementById("boton-cancelar").style.display = "none";
     document.getElementById('tNombre').disabled = false;
 
+    borrarError();
     document.getElementById('cafe-form').reset();
 });
 
@@ -139,6 +154,30 @@ function mensajeCafe(cafe){
     alert(`
         El cafe ${cafe.nombre} se registró con éxito.`);  
 }
+
+function setearError(mensaje, campo) {
+        borrarError();    
+        const divError = document.getElementById('mensaje-error'); 
+    
+        const parrafoError = document.createElement('p');    
+        parrafoError.textContent = mensaje;     
+        divError.appendChild(parrafoError); 
+
+        document.getElementById(campo).style.border = "2px solid red";    
+
+        divError.style.display = 'block';    
+    }
+    
+    function borrarError() {   
+         const divError = document.getElementById('mensaje-error');     
+         divError.innerHTML = "";    
+         divError.style.display = 'none';
+         
+         document.getElementById('tNombre').style.border = "2px solid #b2650b";
+         document.getElementById('fechaTueste').style.border = "2px solid #b2650b";
+    }
+
+
 
 document.getElementById('boton-enviar').addEventListener('click', agregarCafe);
 
@@ -152,19 +191,28 @@ function agregarCafe() {
     const descripcion = document.getElementById('tDescripcion').value;
     
 
-    // Validaciones
-    if (!cafeNombre || !cafeTueste || !fechaTueste ) {
-        alert("Por favor, complete todos los campos requeridos.");
+    // Valida que el nombre tenga un mínimo de 2 caracteres y que no tenfa caracteres especiales
+    if (!/^[a-zA-Z\s]{2,}$/.test(cafeNombre)) {       
+        setearError("Mínimo 2 caracteres. No se admiten caracteres especiales.", "tNombre");
         return;
     }
 
+    //Valida que la fecha de tueste no sea una fecha futura
+    if (!fechaTueste || new Date(fechaTueste) > new Date()) {       
+        setearError("Ingresar una fecha no futura", "fechaTueste");
+        return;
+    }
+
+
+
     // Verifica si ya existe un cafe con el mismo nombre
     if (cafes.some(cafe => cafe.nombre === cafeNombre)) {
-        alert("El nombre del café ya está registrado.");
+        setearError("El nombre del café ya está registrado.", "tNombre");
     }
     
     else
     {
+        borrarError();
          // Crea el objeto cafe
          const cafe = {
             numero: proximo(),

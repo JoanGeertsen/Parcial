@@ -32,6 +32,9 @@
 
     <section class="cafe-form" id="formulario">
         <h2>Registrar un Nuevo Café</h2>
+
+        <div id="mensaje-error"></div> 
+
         <form id="cafe-form">
             <div class="formulario">
                 <label for="tNombre">Nombre del Café</label>
@@ -44,7 +47,7 @@
                     <input type="radio" id="rbBajo" name="nivelTueste" value="Bajo">
                     <label for="bajo">Bajo</label>
     
-                    <input type="radio" id="rbMedio" name="nivelTueste" value="Medio">
+                    <input type="radio" id="rbMedio" name="nivelTueste" value="Medio" checked>
                     <label for="medio">Medio</label>
     
                     <input type="radio" id="rbAlto" name="nivelTueste" value="Alto">
@@ -74,11 +77,11 @@
     
             <div class="formulario">
                 <label for="nbPrecio">Precio</label>
-                <input type="number" id="nbPrecio" name="nbPrecio" value="0" required>
+                <input type="number" id="nbPrecio" name="nbPrecio" value="0" min="0" required>
             </div>        
     
             <div class="formulario">
-                <label for="tDescripcion">Descripción</label>
+                <label for="tDescripcion">Descripción (opcional)</label>
                 <textarea id="tDescripcion" name="tDescripcion"></textarea>
             </div>
     
@@ -100,21 +103,17 @@
                 <thead>
                     <tr>
                         <th>Cafe</th>
+                        <th>Envasado</th>
                         <th>Tueste</th>
                         <th>Origen</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
                     </tr>
                 </thead>
-                <tbody>
-                    
-                </tbody>
-                
+                <tbody>                    
+                </tbody>                
             </table>
-            
-
-        </div>      
-        
+        </div>         
     </section>        
 
     <footer>

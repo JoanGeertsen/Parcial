@@ -35,6 +35,8 @@
     --acento-secundario: #7a3b02;
     --fondo-primario: #121212;
     --fondo-secundario: #1e1e1e;
+    --error-primario: #121212;
+    --error-secundario: #BE1F00;
   }
 
 * {
@@ -122,6 +124,25 @@ nav ul li a:hover {
 
 
 /* Formulario */
+
+#mensaje-error {
+    display: none; 
+    background-color: var(--error-primario);
+    color: #C2381F;
+    border: 2px solid var(--error-secundario);
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+
+#mensaje-error p {
+    margin: 0; 
+}
+
 .cafe-form {
     background-color: #1e1e1e;
     padding: 40px;
