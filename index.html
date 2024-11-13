@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventic</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="recursos/check.png" type="image/png">
+</head>
+<body>
+    
+    <header>
+        <a class="logo" href="#">Eventic</a>
+        <nav>
+            <ul>                
+                <li><a href="#form">Registrar</a></li>
+                <li><a href="#eventos">Gestionar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="banner">
+            <h1>Bienvenidos a la página de Eventos</h1>
+            <p>Explora, registra y participa en eventos increíbles.</p>
+        </section>
+
+        <section class="destacado">
+            <h2>Eventos Destacados</h2>
+            <div class="eventos-grid">
+                <article class="evento" id="dummy">                    
+                    <p>Aún no hay eventos registrados</p>                    
+                    <a href="#formulario" class="btn">Registrar</a>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    
+
+    <section class="evento-form" id="formulario">
+        <h2>Registrar un Nuevo Evento</h2>
+        <form id="evento-form">
+            <div class="formulario">
+                <label for="evento-nombre">Nombre del Evento</label>
+                <input type="text" id="evento-nombre" name="evento-nombre" required>
+            </div>
+    
+            <div class="formulario" id="form">
+                <label>Tipo de Evento</label>                
+                <div class="radio-group">
+                    <input type="radio" id="concierto" name="evento-tipo" value="concierto">
+                    <label for="concierto">Concierto</label>
+    
+                    <input type="radio" id="exposicion" name="evento-tipo" value="exposicion">
+                    <label for="exposicion">Exposición</label>
+    
+                    <input type="radio" id="feria" name="evento-tipo" value="feria">
+                    <label for="feria">Feria</label>
+                </div>
+            </div>
+    
+            <div class="formulario">
+                <label for="evento-fecha">Fecha del Evento</label>
+                <input type="date" id="evento-fecha" name="evento-fecha" required>
+            </div>
+    
+            <div class="formulario">
+                <label for="evento-direccion">Dirección</label>
+                <input type="text" id="evento-direccion" name="evento-direccion" required>
+            </div>
+    
+            <div class="formulario">
+                <label for="evento-cidad">Ciudad</label>
+                <select id="evento-cidad" name="evento-cidad" required>
+                    <option value="Bahía Blanca">Bahía Blanca</option>
+                    <option value="Buenos Aires">Buenos Aires</option>
+                    <option value="Rosario">Rosario</option>
+                    <option value="Neuquén">Neuquén</option>
+                    <option value="Córdoba">Córdoba</option>
+                    <option value="Mendoza">Mendoza</option>
+                    
+                </select>
+            </div>
+    
+            <div class="formulario">
+                <label for="evento-capacidad">Capacidad del Evento</label>
+                <input type="number" id="evento-capacidad" name="evento-capacidad" required>
+            </div>
+    
+            <div class="formulario">
+                <label for="evento-gratuito">Evento Gratuito</label>
+                <input type="checkbox" id="evento-gratuito" name="evento-gratuito">
+            </div>
+    
+            <div class="formulario">
+                <label for="evento-costo">Costo de Entrada</label>
+                <input type="number" id="evento-costo" name="evento-costo" value="0" required>
+            </div>
+    
+            <div class="formulario">
+                <label for="evento-puntuacion">Valoración del Evento: <span id="valorPuntuacion">3</span></label>
+                <input type="range" id="evento-puntuacion" name="evento-puntuacion" min="1" max="5" value="3" required>
+            </div>
+    
+            <div class="formulario">
+                <label for="evento-notas">Observaciones</label>
+                <textarea id="evento-notas" name="evento-notas"></textarea>
+            </div>
+    
+            <div class="formulario-botones">
+                <button type="button" id="boton-enviar" class="btn">Cargar Evento</button>
+                <button type="button" id="boton-actualizar" class="btn">Actualizar</button>
+                <button type="button" id="boton-cancelar" class="btn">Cancelar</button>
+                <button type="reset" id="boton-reset" class="btn">Resetear</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="gestion-eventos" id="eventos">
+        <h2>Listado</h2>
+
+        <div id="resultado">
+
+            <table id="tabla-resultados">
+                <thead>
+                    <tr>
+                        <th>Evento</th>
+                        <th>Fecha</th>
+                        <th>Ciudad</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                </tbody>
+                
+            </table>
+            
+
+        </div>
+
+        <div class="botones-gestion">
+            <button id="contieneBtn" class="btn">Contiene</button>
+            <button id="comienzaBtn" class="btn">Comienza con</button>
+            <button id="finalizaBtn" class="btn">Finaliza con</button>            
+        </div>
+
+        <input type="text" id="textoFiltro">
+        
+    </section>        
+
+    <footer>
+        <p>&copy; 2024 Eventos. Todos los derechos reservados.</p>
+        <ul>
+            <li><a href="#">Política de Privacidad</a></li>
+            <li><a href="#">Términos y Condiciones</a></li>
+        </ul>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
