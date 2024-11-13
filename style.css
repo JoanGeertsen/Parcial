@@ -30,6 +30,24 @@
     }   
 }
 
+#resultado {
+    overflow-x: auto; 
+    width: 100%;      
+}
+
+
+@media (max-width: 600px) {
+    #tabla-resultados th, #tabla-resultados td {
+        font-size: 12px;  
+        padding: 8px;     
+    }
+
+    #tabla-resultados th {
+        white-space: nowrap;  
+    }
+}
+
+
 :root {
     --acento-principal: #b2650b;
     --acento-secundario: #7a3b02;
