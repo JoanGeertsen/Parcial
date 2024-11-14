@@ -175,6 +175,7 @@ function setearError(mensaje, campo) {
          
          document.getElementById('tNombre').style.border = "2px solid #b2650b";
          document.getElementById('fechaTueste').style.border = "2px solid #b2650b";
+         document.getElementById('nbPrecio').style.border = "2px solid #b2650b";
     }
 
 
@@ -195,7 +196,7 @@ function agregarCafe() {
     if (!/^[a-zA-Z\s]{2,}$/.test(cafeNombre)) {       
         setearError("Mínimo 2 caracteres. No se admiten caracteres especiales.", "tNombre");
         return;
-    }
+    } 
 
     //Valida que la fecha de tueste no sea una fecha futura
     if (!fechaTueste || new Date(fechaTueste) > new Date()) {       
@@ -204,6 +205,11 @@ function agregarCafe() {
     }
 
 
+   //Valida que el precio un numero mayor o igual a cero
+    if (!cafePrecio || cafePrecio < 0 || isNaN(cafePrecio)) {       
+        setearError("Ingresar un precio válido", "nbPrecio");
+        return;
+    }
 
     // Verifica si ya existe un cafe con el mismo nombre
     if (cafes.some(cafe => cafe.nombre === cafeNombre)) {
